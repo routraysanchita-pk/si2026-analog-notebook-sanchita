@@ -36,6 +36,16 @@ Output Voltage was observed from the simulation
 
 ![Voltage Divider Netlist](VOLTAGE%20DIVIDER1.png)
 
+## 2.ID vs VGS
+
+The variation of drain current with gate-sourse voltage was studied.
+
+![ID vs VGS](ID%20vs%20VGS.png)
+![ID vs VGS](ID%20vs%20VGS1.png)
+![ID vs VGS](ID%20vs%20VGS2.png)
+![ID vs VGS](ID%20vs%20VGS3.png)
+
+
 
 
 
