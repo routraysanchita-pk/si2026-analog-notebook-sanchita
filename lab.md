@@ -57,8 +57,17 @@ Output Voltage was observed from the simulation
 
 The variation of drain current with gate-sourse voltage was studied.
 
-![ID vs VGS](ID%20vs%20VGS.png)
-![ID vs VGS](ID%20vs%20VGS1.png)
+```spice
+Title:ID-VS-VGS for NMos in saturation region
+
+*level-1 Model
+.MODEL nmos1 NMOS (LEVEL=1 PHI=0.846 VTO-0.514 KP=122U GAMMA=0.55 LAMBDA=0.0)
+
+*Set the device temperature
+.TEMP 27
+
+*netlist
+```
 ![ID vs VGS](ID%20vs%20VGS2.png)
 ![ID vs VGS](ID%20vs%20VGS3.png)
 
