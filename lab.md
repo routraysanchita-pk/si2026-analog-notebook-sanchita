@@ -2,7 +2,7 @@
 
 Maintain Lab notebook here.
 
-# Lab 1: Linux
+# Lab 1: Linux, Vim and Git
 
 ## 1.BASIC LINUX COMMAND
 Commands used are:
@@ -24,5 +24,5 @@ Commands used are:
   
 ![Linux Command](LINUX%20COMMAND1.png)
 
-# Lab 2: Vim and git
+# Lab 2: 
 
