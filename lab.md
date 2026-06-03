@@ -28,6 +28,14 @@ Commands used are:
 
 ## 1.VOLTAGE DIVIDER
 
+Voltage Divider Netlist/Circuit Was Simulated Successfully 
+
+![Voltage Divider Netlist](VOLTAGE%20DIVIDER.png)
+
+Output Voltage was observed from the simulation
+
+![Voltage Divider Netlist](VOLTAGE%20DIVIDER1.png)
+
 
 
 
