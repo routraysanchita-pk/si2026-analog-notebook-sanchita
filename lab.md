@@ -24,7 +24,10 @@ Commands used are:
   
 ![Linux Command](LINUX%20COMMAND1.png)
 
-# Lab 2: Vim and Git
+# Lab 2: NGSPICE
+
+## 1.VOLTAGE DIVIDER
+
 
 
 
