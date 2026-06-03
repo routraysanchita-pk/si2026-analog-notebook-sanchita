@@ -31,7 +31,7 @@ Commands used are:
 Voltage Divider Netlist/Circuit Was Simulated Successfully 
 
 '''spice
-* Thismis netlist/circuit of a simple voltage divider
+* This is netlist/circuit of a simple voltage divider
   
 R1 vin vout 1K
 R2 vout 0 1K
@@ -48,8 +48,6 @@ PLOT V(vout)
 
 .end
 '''
-
-![Voltage Divider Netlist](VOLTAGE%20DIVIDER.png)
 
 Output Voltage was observed from the simulation
 
