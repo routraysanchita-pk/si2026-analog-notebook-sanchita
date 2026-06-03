@@ -45,7 +45,7 @@ The variation of drain current with gate-sourse voltage was studied.
 ![ID vs VGS](ID%20vs%20VGS2.png)
 ![ID vs VGS](ID%20vs%20VGS3.png)
 
+# Lab 3: NGSPICE
 
-
-
+##
 
