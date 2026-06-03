@@ -30,6 +30,25 @@ Commands used are:
 
 Voltage Divider Netlist/Circuit Was Simulated Successfully 
 
+'''spice
+* Thismis netlist/circuit of a simple voltage divider
+  
+R1 vin vout 1K
+R2 vout 0 1K
+
+*Pulse StimulusVpulse vin 0 PULSE(0 5 0.5u 10n 10n 0.5u 1u)
+
+*Transient Analysis
+.TRAN 0.1u 1.5u
+
+.control
+RUN
+PLOT V(vout)
+.endc
+
+.end
+'''
+
 ![Voltage Divider Netlist](VOLTAGE%20DIVIDER.png)
 
 Output Voltage was observed from the simulation
