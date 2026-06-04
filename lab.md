@@ -51,7 +51,7 @@ PLOT V(vout)
 
 Output Voltage was observed from the simulation
 
-![Voltage Divider Netlist](VOLTAGE%20DIVIDER1.png)
+![Voltage Divider](VOLTAGE%20DIVIDER1.png)
 
 ## 2.ID vs VGS
 
@@ -123,5 +123,5 @@ PLOT v(vout)
 
 .end
 ```
-
+![RC Circuit](RC-STEP.png)
 
