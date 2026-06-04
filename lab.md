@@ -48,16 +48,11 @@ PLOT V(vout)
 
 .end
 ```
-
-Output Voltage was observed from the simulation
+### Observation
 
 ![Voltage Divider](VOLTAGE%20DIVIDER1.png)
 
 ## 2.ID vs VGS
-
-The variation of drain current with gate-sourse voltage was studied.
-
-## ID vs VGS
 
 The variation of drain current with gate-source voltage was analyzed.
 
@@ -87,7 +82,7 @@ PLOT (2*Vid2#branch)^0.5 vs V(D)
 
 .END
 ```
-
+### Observation
 ![ID vs VGS](ID%20vs%20VGS2.png)
 ![ID vs VGS](ID%20vs%20VGS3.png)
 
