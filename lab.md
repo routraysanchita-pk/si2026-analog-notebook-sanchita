@@ -257,8 +257,6 @@ The average output voltage of the RC circuit was obtained successfully.
 
 ## 2.RC CIRCUIT AS HIGH PASS FILTER
 
-## RC High Pass Filter
-
 ### a.The RC high-pass filter was simulated to measure the rise time and fall time of the output waveform.
 
 ```spice
