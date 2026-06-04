@@ -114,6 +114,7 @@ PLOT v(vout)
 
 .end
 ```
+### Observation
 ![RC Circuit Step Response](RC-STEP.png)
 
 ## 2.RC CIRCUIT FREQUENCY RESPONSE
@@ -147,6 +148,7 @@ plot vdb(vout)
 
 .end
 ```
+### Observation
 ![RC Circuit Frequency Response](RC-BODE.png)
 
 # Lab 4: RC CIRCUIT IN NGSPICE 
@@ -252,3 +254,107 @@ plot v(vout)
 The average output voltage of the RC circuit was obtained successfully.
 
 ![RC Circuit as low pass](RC-CKT2.png)
+
+## 2.RC CIRCUIT AS HIGH PASS FILTER
+
+## RC High Pass Filter
+
+### a.The RC high-pass filter was simulated to measure the rise time and fall time of the output waveform.
+
+```spice
+* RC high pass filter
+
+C1 Vin Vout 1p
+R1 Vout 0 1k
+
+Vpulse Vin 0 PULSE(0 5 0 10p 10p 10n 20n)
+
+* Rise time
+.measure tran trise
++TRIG V(Vout) VAL=0.5 RISE=1
++TARG V(Vout) VAL=4.5 RISE=1
+
+* Fall time
+.measure tran tfall
++TRIG V(Vout) VAL=4.5 FALL=1
++TARG V(Vout) VAL=0.5 FALL=1
+
+.tran 1p 50n
+
+.control
+run
+plot V(Vin) V(Vout)
+.endc
+
+.end
+```
+
+#### Observation
+
+The rise time and fall time of the RC high-pass filter were measured successfully.
+
+![RC Circuit as high pass](CR-CKT.png)
+
+## b.The CR circuit was simulated to determine the effective time constant.
+
+RC Circuit with C = 50pF
+
+```spice
+* CR ckt with c=50p
+
+C1 Vin Vout 50p
+R1 Vout 0 1k
+
+Vpulse Vin 0 PULSE(0 5 0 10p 10p 10n 20n)
+
+* Effective Time Constant
+.measure tran tau
++TRIG V(Vout) VAL=3.15 FALL=1
++TARG V(Vout) VAL=1.85 FALL=1
+
+.tran 1p 300n
+
+.control
+run
+plot V(Vin) V(Vout)
+.endc
+
+.end
+```
+
+#### Observation
+
+The effective time constant of the CR circuit was measured successfully.
+
+![RC Circuit as high pass](CR-CKT1.png)
+
+### c.CR Circuit Average Output Voltage
+
+The average output voltage of the CR circuit was measured.
+
+```spice
+* CR ckt average output voltage
+
+C1 Vin Vout 50p
+R1 Vout 0 1k
+
+Vpulse Vin 0 PULSE(0 5 0 10P 10P 10N 20N)
+
+* Average output voltage
+.measure tran avgout AVG V(Vout) FROM=60n TO=100n
+
+.tran 1p 100n
+
+.control
+run
+plot V(vout)
+.endc
+
+.end
+```
+
+#### Observation
+
+The average output voltage of the CR circuit was obtained successfully.
+
+![RC Circuit as high pass](CR-CKT2.png)
