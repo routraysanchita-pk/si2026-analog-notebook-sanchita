@@ -95,10 +95,6 @@ PLOT (2*Vid2#branch)^0.5 vs V(D)
 
 ## 1.RC CIRCUIT WITH STEP INPUT
 
-The capacitor charging response was observed at the output node.
-
-## RC Step Response
-
 The RC step response circuit was simulated successfully.
 
 ```spice
