@@ -93,5 +93,35 @@ PLOT (2*Vid2#branch)^0.5 vs V(D)
 
 # Lab 3: NGSPICE
 
-##
+## 1.RC CIRCUIT WITH STEP INPUT
+
+The capacitor charging response was observed at the output node.
+
+## RC Step Response
+
+The RC step response circuit was simulated successfully.
+
+```spice
+Title: RC Step response
+
+* RC Circuit
+R1 vin vout 1e3
+C1 vout 0 1p
+
+* Pulse Stimulus
+Vpulse vin 0 PULSE(0 5 2n 10p 10p 10n 20n)
+
+.MEASURE TRAN tr1090 TRIG v(vout) VAL=0.5 RISE=1 TARG v(vout) VAL=4.5 RISE=1
+
+* Transient Analysis
+.TRAN 1p 30n
+
+.control
+RUN
+PLOT v(vout)
+.endc
+
+.end
+```
+
 
