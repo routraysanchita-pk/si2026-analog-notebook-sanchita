@@ -119,5 +119,37 @@ PLOT v(vout)
 
 .end
 ```
-![RC Circuit](RC-STEP.png)
+![RC Circuit Step Response](RC-STEP.png)
 
+## 1.RC CIRCUIT FREQUENCY RESPONSE
+
+```spice
+* This is a pulse stimulus with lowvoltage(v1=0V) high(v2=5V)
+Vpulse vin 0 AC=1 PULSE 0 5 2n 10p 10p 10n 20n
+
+.MEASURE TRAN tr1090 TRIG v(vout) VAL=0.5 RISE=1 TARG v(vout) VAL=4.5 RISE=1
+
+* Transient analysis
+*.TRAN step-size total-sim-time
+*.TRAN 1p 30n
+
+*.AC DEC 100 10 10e9
+*.MEAS AC vdbmax MAX vdb(vout)
+*.MEAS AC f3db WHEN vdb(vout)=v3db fall=last
+
+* Control script
+.control
+save all
+AC DEC 100 10 10e9
+MEAS AC vdbmax MAX vdb(vout)
+LET v3db = vdbmax - 3.0
+MEAS AC f3db WHEN vdb(vout)=v3db fall=last
+write rc-step.raw
+
+plot vdb(vout)
+
+.endc
+
+.end
+```
+![RC Circuit Frequency Response](RC-BODE.png)
