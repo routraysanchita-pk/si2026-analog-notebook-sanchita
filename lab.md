@@ -369,3 +369,8 @@ The average output voltage of the CR circuit was obtained successfully.
 
 As the time constant (τ = RC) decreases, the output waveform changes from slow exponential curves to a triangular waveform.
 
+![RC Circuit in ADALM](RC1.png)
+
+![RC Circuit in ADALM](RC2.png)
+
+![RC Circuit in ADALM](RC3.png)
