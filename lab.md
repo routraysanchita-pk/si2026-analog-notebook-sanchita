@@ -57,17 +57,37 @@ Output Voltage was observed from the simulation
 
 The variation of drain current with gate-sourse voltage was studied.
 
+## ID vs VGS
+
+The variation of drain current with gate-source voltage was analyzed.
+
 ```spice
-Title:ID-VS-VGS for NMos in saturation region
+Title: Id-vs-Vgs for NMOS in Saturation region
 
-*level-1 Model
-.MODEL nmos1 NMOS (LEVEL=1 PHI=0.846 VTO-0.514 KP=122U GAMMA=0.55 LAMBDA=0.0)
+* Level-1 Model
+.MODEL nmos1 NMOS (LEVEL=1 PHI=0.846 VTO=0.514 KP=122U GAMMA=0.55 LAMBDA=0.0)
 
-*Set the device temperature
+* Set the device temperature
 .TEMP 27
 
-*netlist
+* Netlist
+M2 D2 D2 0 B nmos1 W=5u L=1u
+Vds D 0 DC 5
+Vid2 D D2 DC 0
+Vsb 0 B DC 0
+
+* DC Sweep Analysis
+.DC Vds 0 5 0.001 Vsb 0 1 0.5
+
+.CONTROL
+RUN
+PLOT Vid2#branch vs V(D)
+PLOT (2*Vid2#branch)^0.5 vs V(D)
+.ENDC
+
+.END
 ```
+
 ![ID vs VGS](ID%20vs%20VGS2.png)
 ![ID vs VGS](ID%20vs%20VGS3.png)
 
