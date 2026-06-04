@@ -356,3 +356,16 @@ plot V(vout)
 The average output voltage of the CR circuit was obtained successfully.
 
 ![RC Circuit as high pass](CR-CKT2.png)
+
+# Lab 8: ADALM LAB 
+
+## Observation
+
+- Large τ: Slow charging and discharging of the capacitor.
+- Medium τ: Partial charging and discharging observed.
+- Small τ: Output resembles a triangular waveform.
+
+## Result
+
+As the time constant (τ = RC) decreases, the output waveform changes from slow exponential curves to a triangular waveform.
+
