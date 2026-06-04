@@ -121,7 +121,7 @@ PLOT v(vout)
 ```
 ![RC Circuit Step Response](RC-STEP.png)
 
-## 1.RC CIRCUIT FREQUENCY RESPONSE
+## 2.RC CIRCUIT FREQUENCY RESPONSE
 
 ```spice
 * This is a pulse stimulus with lowvoltage(v1=0V) high(v2=5V)
@@ -153,3 +153,76 @@ plot vdb(vout)
 .end
 ```
 ![RC Circuit Frequency Response](RC-BODE.png)
+
+# Lab 4: RC CIRCUIT IN NGSPICE 
+
+## 1.RC CIRCUIT AS LOW PASS FILTER
+
+### a. The RC circuit was simulated to measure the rise time and fall time of the output waveform.
+
+```spice
+*RC CIRCUIT
+R1 Vin Vout 1k
+C1 Vout 0 1p
+
+*Pulse Input
+Vpulse Vin 0 PULSE(0 5 0 10p 10p 10n 20n)
+
+*Measure Rise Time (10% to 90%)
+.measure tran trise
++TRIG V(Vout) VAL=0.5 RISE=1
++TARG V(Vout) VAL=4.5 RISE=1
+
+*Measure Fall Time (90% to 10%)
+.measure tran tfall
++TRIG V(Vout) VAL=4.5 FALL=1
++TARG V(Vout) VAL=0.5 FALL=1
+
+.TRAN 1p 50n
+
+.control
+run
+plot V(Vin) V(Vout)
+.endc
+
+.end
+```
+
+#### Observation
+
+The rise time and fall time of the RC circuit were measured successfully.
+
+![RC Circuit as low pass](RC-CKT.png)
+
+### b.The RC circuit was simulated to determine the effective time constant.
+
+RC Circuit with C = 50pF
+
+```spice
+* RC CKT WITH C=50p
+
+R1 vin vout 1k
+C1 vout 0 50p
+
+Vpulse vin 0 PULSE(0 5 0 10p 10p 10n 20n)
+
+* Effective time constant
+.measure tran tau
++TRIG v(vout) VAL=3.15 RISE=1
++TARG v(vout) VAL=1.85 FALL=1
+
+.TRAN 1p 300n
+
+.control
+run
+plot v(vin) v(vout)
+.endc
+
+.end
+```
+
+### Observation
+
+The effective time constant of the RC circuit was measured successfully.
+
+![RC Circuit as low pass](RC-CKT1.png)
