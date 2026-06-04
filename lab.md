@@ -216,8 +216,39 @@ plot v(vin) v(vout)
 .end
 ```
 
-### Observation
+#### Observation
 
 The effective time constant of the RC circuit was measured successfully.
 
 ![RC Circuit as low pass](RC-CKT1.png)
+
+### c.RC Average Output
+
+The average output voltage of the RC circuit was measured.
+
+```spice
+* RC average output
+
+R1 vin vout 1k
+C1 vout 0 50p
+
+Vpulse vin 0 PULSE(0 5 0 10p 10p 10n 20n)
+
+* Average output voltage
+.measure tran avgout AVG v(vout) FROM=40n TO=80n
+
+.tran 1p 300n
+
+.control
+run
+plot v(vout)
+.endc
+
+.end
+```
+
+#### Observation
+
+The average output voltage of the RC circuit was obtained successfully.
+
+![RC Circuit as low pass](RC-CKT2.png)
