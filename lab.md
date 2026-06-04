@@ -373,4 +373,4 @@ As the time constant (τ = RC) decreases, the output waveform changes from slow 
 
 ![RC Circuit in ADALM](RC2.png)
 
-![RC Circuit in ADALM](RC2.png)
+![RC Circuit in ADALM](RC3.png)
