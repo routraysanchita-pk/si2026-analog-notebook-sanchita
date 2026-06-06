@@ -357,20 +357,170 @@ The average output voltage of the CR circuit was obtained successfully.
 
 ![RC Circuit as high pass](CR-CKT2.png)
 
+# Lab 7: ADALM LAB
+
+## Experiment 1: Voltage Divider using ADALM2000 and Scopy
+
+A voltage divider circuit was implemented using two resistors and tested using the ADALM2000 platform. The input and output voltages were measured using the Scopy Voltmeter tool. The measured output voltage was approximately half of the input voltage, demonstrating the voltage divider principle.
+
+### Observation
+
+The measured output voltage matched the expected voltage divider calculation.
+
+
+
+### Result
+
+The voltage divider circuit was successfully implemented and verified using ADALM2000 and Scopy.
+
+## Experiment 2:Frequency Generator and Oscilloscope Verification
+
+A sine wave was generated using the Scopy Signal Generator and observed using the Oscilloscope.
+
+The waveform was displayed correctly on the screen, confirming the proper operation of both instruments. This experiment demonstrated basic signal generation, waveform observation, and verification using the ADALM2000 platform.
+
+### Observation
+
+A stable sinusoidal waveform was observed on the oscilloscope display.
+
+
+
+### Result  
+
+The generated signal was successfully measured and displayed, verifying the correct functioning of the Signal Generator and Oscilloscope.
+
 # Lab 8: ADALM LAB 
 
-## Observation
+## RC Circuit Response for Different Time Constants
 
-- Large τ: Slow charging and discharging of the capacitor.
-- Medium τ: Partial charging and discharging observed.
-- Small τ: Output resembles a triangular waveform.
+The RC circuit was implemented using ADALM2000 and Scopy. The output waveform was observed by varying the time constant (τ = RC) relative to the input signal period.
 
-## Result
+### Observation
 
-As the time constant (τ = RC) decreases, the output waveform changes from slow exponential curves to a triangular waveform.
+- τ > T : Slow exponential charging and discharging of the capacitor.
+- τ ≈ T : Partial charging and discharging observed.
+- τ < T : Output approaches a triangular waveform.
+
+### Result
+
+The waveform shape depends on the RC time constant. Increasing τ slows the circuit response, while decreasing τ causes the circuit to respond more quickly to the input signal.
 
 ![RC Circuit in ADALM](RC1.png)
 
 ![RC Circuit in ADALM](RC2.png)
 
 ![RC Circuit in ADALM](RC3.png)
+
+# Lab 10: MOS Parameter Extraction Using Ngspice
+
+## a.Parameter Extraction of Level-1 Model
+
+```spice
+Title: Id-vs-Vgs for and NMOS in Saturation region
+* Comparing the Level-1 and Level-49 SPICE model
+* From sqrt(1*Id) vs Vgs, Vt, Kp and gamma can be extracted
+
+* Level-1 Model 
+.MODEL nmos1 NMOS (LEVEL=1 PHI=0.846 VT0=0.514 KP=122U GAMMA=0.55 LAMBDA=0.0)
+
+* Set the device temperature
+.TEMP 27
+
+* Netlist:
+* diode connected (Drain/Gate shorted nmos 
+M2	D2	D2	0	B 	nmos1    W=5u L=1u
+Vds	D	0	DC	5
+Vid2	D	D2	DC	0
+Vsb	0	B	DC	0
+
+* DC Sweep Analyses
+*.DC 	Vsrc	start	stop	step	Vsrc2	start stop step
+*.DC	Vds	0	5	0.001  Vsb  0 1 0.5
+.DC	Vds	0	5	0.001  
+
+* ngspice Script with control statements.
+.CONTROL
+RUN
+** Plot sqrt(2*Id) for M1 amd M2
+**PLOT Vid2#branch vs V(D)
+PLOT (2*Vid2#branch)^0.5  vs V(D) 
+** Calculating uCox from rt-Id-Vgs slope
+LET rt_id=Vid2#branch^0.5 
+LET d_rt_id=deriv(rt_id)
+MEAS DC d_at_1v FIND d_rt_id AT=2.0
+LET ucox=(2.0/5.0)*d_at_1v^2.0
+print ucox
+** Calculating Vt by calculating the intercept
+MEAS DC rt_id_at_1  FIND rt_id AT=2.0
+LET Vt=2.0-(d_at_1v^-1 * rt_id_at_1)
+print Vt
+.ENDC
+
+.END
+```
+### Observation
+
+## b.Parameter Extraction for Level-49 BSIM Model
+
+## c.Level-1 vs Level-49 Comparison
+
+```spice
+### Id-vs-Vgs for NMOS in Saturation Region
+
+```spice
+Title: Id-vs-Vgs for and NMOS in Saturation region
+
+* From sqrt(1*Id) vs Vgs, Vt, Kp and gamma can be extracted
+
+* Level-49 BSIM 3v1 Model Library for 0.5um SCMOS Technology
+.LIB scn4m_cnrs_bsim3v1.lib nom
+
+* Level-1 Model
+.MODEL sitn NMOS (LEVEL=1 PHI=0.846 VTO=0.514 KP=122U GAMMA=0.55 LAMBDA=0.0)
+
+* Set the device temperature
+.TEMP 27
+
+* Netlist:
+* Two diode connected (Drain/Gate shorted) nmos
+* one with Level-1 model (M2) and another
+* with Level-49 BSIM 3v1 model (M1)
+
+M1 D1 D1 0 B scmosn W=5u L=1u
+M2 D2 D2 0 B sitn   W=5u L=1u
+
+Vds  D  0  DC 5
+Vid1 D  D1 DC 0
+Vid2 D  D2 DC 0
+Vsb  0  B  DC 0
+
+* DC Sweep Analyses
+*.DC Vsrc start stop step Vsrc2 start stop step
+.DC Vds 0 5 0.001 Vsb 0 1 0.5
+
+* ngspice Script with control statements
+.CONTROL
+RUN
+
+** Plot sqrt(2*Id) for M1 and M2
+PLOT (2*Vid2#branch)^0.5 (2*Vid1#branch)^0.5 vs V(D)
+
+LET rt_id = Vid2#branch^0.5
+LET d_rt_id = deriv(rt_id)
+
+MEAS DC d_at_1v FIND d_rt_id AT=2.0
+LET ucox=(2.0/5.0)*d_at_1v^2.0
+print ucox
+
+** Calculating Vt by calculating the intercept
+MEAS DC rt_id_at_1 FIND rt_id AT=2.0
+LET Vt=2.0-(d_at_1v^-1 * rt_id_at_1)
+print Vt
+
+*PLOT deriv(2*Vid2#branch) deriv(2*Vid1#branch) vs V(D)
+
+.ENDC
+
+.END
+```
+### Observation 
