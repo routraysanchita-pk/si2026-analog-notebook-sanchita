@@ -357,7 +357,7 @@ The average output voltage of the CR circuit was obtained successfully.
 
 ![RC Circuit as high pass](CR-CKT2.png)
 
-# Lab 7: ADALM LAB
+# Lab 5: ADALM LAB
 
 ## Experiment 1: Voltage Divider using ADALM2000 and Scopy
 
@@ -392,7 +392,7 @@ OUTPUT SIGNAL
 
 The generated signal was successfully measured and displayed, verifying the correct functioning of the Signal Generator and Oscilloscope.
 
-# Lab 8: ADALM LAB 
+# Lab 6: ADALM LAB 
 
 ## RC Circuit Response for Different Time Constants
 
