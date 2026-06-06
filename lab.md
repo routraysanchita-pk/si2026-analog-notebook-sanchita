@@ -414,6 +414,33 @@ The waveform shape depends on the RC time constant. Increasing τ slows the circ
 
 ![RC Circuit in ADALM](RC3.png)
 
+# Lab 7:Microphone Amplifier Modeling and Simulation
+
+## a.Using the microphone as an AC voltage source (`AC=1`), perform AC simulation and:
+  - Plot `v(out)` in decibels and phase of the transfer function.
+  - Using `.MEASURE` (or `MEASURE` in control block), determine:
+    - Magnitude of `v(out)` at 1 kHz
+    - Decibel value of `v(out)` at 1 kHz
+    - `-3 dB` frequency of the high-pass filter
+    - `-3 dB` frequency of the low-pass filter
+      
+### Observation
+
+## b.Use the power supply voltage source as an AC source (ensure microphone input AC is set to zero) and measure the power supply gain (in dB).
+
+## c.Apply a 1 kHz sine wave at the input with the amplitude derived from the Thevenin model and perform transient simulation. Using `.MEASURE`, determine:
+  - Peak output voltage
+  - Peak input voltage
+  - Voltage gain
+
+- Repeat the above transient measurements for:
+  - 1 Hz input signal
+  - 200 kHz input signal
+
+  Compare the measured gain with the transient simulation results.
+
+## d.Finally, model the Op-Amp as a single-pole amplifier (pole obtained from the datasheet) and repeat all the above measurements.
+
 # Lab 10: MOS Parameter Extraction Using Ngspice
 
 ## a.Parameter Extraction of Level-1 Model
