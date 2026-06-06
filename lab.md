@@ -426,7 +426,13 @@ The waveform shape depends on the RC time constant. Increasing τ slows the circ
       
 ### Observation
 
+![MEMs Microphone](MEM1.png)
+
 ## b.Use the power supply voltage source as an AC source (ensure microphone input AC is set to zero) and measure the power supply gain (in dB).
+
+### Observation
+![MEMs Microphone](MEM2.png)
+![MEMs Microphone](MEM21.png)
 
 ## c.Apply a 1 kHz sine wave at the input with the amplitude derived from the Thevenin model and perform transient simulation. Using `.MEASURE`, determine:
   - Peak output voltage
@@ -439,7 +445,15 @@ The waveform shape depends on the RC time constant. Increasing τ slows the circ
 
   Compare the measured gain with the transient simulation results.
 
+### Observation
+![MEMs Microphone](MEM3.png)
+![MEMs Microphone](MEM31.png)
+
 ## d.Finally, model the Op-Amp as a single-pole amplifier (pole obtained from the datasheet) and repeat all the above measurements.
+
+### Observation
+![MEMs Microphone](MEM4.png)
+![MEMs Microphone](MEM41.png)
 
 # Lab 10: MOS Parameter Extraction Using Ngspice
 
