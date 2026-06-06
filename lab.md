@@ -367,7 +367,7 @@ A voltage divider circuit was implemented using two resistors and tested using t
 
 The measured output voltage matched the expected voltage divider calculation.
 
-
+![Voltage divider](Voldiv.png)
 
 ### Result
 
@@ -383,7 +383,10 @@ The waveform was displayed correctly on the screen, confirming the proper operat
 
 A stable sinusoidal waveform was observed on the oscilloscope display.
 
-
+INPUT SIGNAL
+![Frequency Generator And Oscilloscope](Freq%20gen%20ip.png)
+OUTPUT SIGNAL
+![Frequency Generator And Oscilloscope](Freq%20gen%20op.png)
 
 ### Result  
 
@@ -462,6 +465,8 @@ print Vt
 
 ## b.Parameter Extraction for Level-49 BSIM Model
 
+![Level 49](LEVEL49.png)
+
 ## c.Level-1 vs Level-49 Comparison
 
 ```spice
@@ -524,3 +529,5 @@ print Vt
 .END
 ```
 ### Observation 
+
+![Level 1 VS Level 49](LEVEL1vsLEVEL49.png)
