@@ -463,6 +463,8 @@ print Vt
 ```
 ### Observation
 
+![Level 1](LEVEL1.png)
+
 ## b.Parameter Extraction for Level-49 BSIM Model
 
 ![Level 49](LEVEL49.png)
